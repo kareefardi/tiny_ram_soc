@@ -25,8 +25,27 @@ void main()
   print(message);
   print("\n");
 
+  char int_buffer[20];
+
+  unsigned int cyc_start, cyc_end, cycles;
+  __asm__ volatile ("rdcycle %0" : "=r"(cyc_start));
   long long *encrypted = rsa_encrypt(message, sizeof(message), pub);
+  __asm__ volatile ("rdcycle %0" : "=r"(cyc_end));
+  cycles = cyc_end - cyc_start;
+  inttochar(cycles, int_buffer);
+  print("Encrypting time:\t");
+  print(int_buffer);
+  print("\n");
+
+
+  __asm__ volatile ("rdcycle %0" : "=r"(cyc_start));
   char *decrypted = rsa_decrypt(encrypted, 8*sizeof(message), priv);
+  __asm__ volatile ("rdcycle %0" : "=r"(cyc_end));
+  cycles = cyc_end - cyc_start;
+  inttochar(cycles, int_buffer);
+  print("Decrypting time:\t");
+  print(int_buffer);
+  print("\n");
 
   print("Decrypted:\n");
   print("\t");

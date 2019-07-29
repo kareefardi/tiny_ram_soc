@@ -18,6 +18,7 @@ START_FILE = $(FIRMWARE_DIR)/firmware.S
 C_FILES = main.c \
           $(INCLUDE_DIR)/delay/delay.c \
           $(INCLUDE_DIR)/uart/uart.c \
+          $(INCLUDE_DIR)/string/string.c \
           $(INCLUDE_DIR)/rsa/rsa.c
 
 DEFINES = -Dgpio -Dwarm_boot
