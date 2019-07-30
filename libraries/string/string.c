@@ -15,7 +15,7 @@ void reverse(char* word, int length)
 void inttochar(int val, char* converted)
 {
     int i = 0;
-    
+    const char digits[] = "0123456789";
     do {
         converted[i] = digits[val % 10];
         val = val / 10;
