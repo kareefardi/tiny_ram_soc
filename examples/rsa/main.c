@@ -18,10 +18,10 @@ void main()
    struct public_key_class pub[1];
    struct private_key_class priv[1];
 
- //  priv->modulus = 728226539;
- //  priv->exponent = 461835209;
- //  pub->modulus = 728226539;
- //  pub->exponent = 257;
+//   priv->modulus = 728226539;
+//   priv->exponent = 461835209;
+//   pub->modulus = 728226539;
+//   pub->exponent = 257;
 
   print("Generating keys..\n");
   __asm__ volatile ("rdcycle %0" : "=r"(cyc_start));
@@ -43,10 +43,10 @@ void main()
    print("\n");
 
    print("Private(exp, mod): ");
-   inttochar(priv->exponent, int_print_buffer);
+   inttochar(pub->exponent, int_print_buffer);
    print(int_print_buffer);
    print(", ");
-   inttochar(priv->modulus, int_print_buffer);
+   inttochar(pub->modulus, int_print_buffer);
    print(int_print_buffer);
    print("\n");
 
