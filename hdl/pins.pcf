@@ -106,4 +106,5 @@ set_io -nowarn  pin_usbp B4
 set_io -nowarn  pin_usbn A4
 
 # 16MHz clock
-set_io -nowarn CLK B2
+set_io -nowarn clk B2
+#set_io -nowarn CLK B2

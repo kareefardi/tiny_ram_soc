@@ -6,10 +6,10 @@ VERILOG_FILES = \
            $(HDL_DIR)/picosoc/uart/simpleuart.v \
            $(HDL_DIR)/picosoc/picosoc.v \
            $(HDL_DIR)/picorv32/picorv32.v \
-           $(HDL_DIR)/picosoc/ili9341/ili9341_direct.v \
-           $(HDL_DIR)/picosoc/sdcard/sdcard.v \
            $(HDL_DIR)/picosoc/spi_master/spi_master.v \
-           $(HDL_DIR)/picosoc/flash_write/flash_write.v \
+           $(HDL_DIR)/picosoc/i2c/i2c.v \
+           $(HDL_DIR)/picosoc/nunchuk/I2C_master.v \
+           $(HDL_DIR)/picosoc/pll/pll.v \
            $(HDL_DIR)/picosoc/gpio/gpio.v \
 
 PCF_FILE = $(HDL_DIR)/pins.pcf
@@ -21,7 +21,7 @@ C_FILES = main.c \
           $(INCLUDE_DIR)/string/string.c \
           $(INCLUDE_DIR)/rsa/rsa.c
 
-DEFINES = -Dgpio -Dwarm_boot
+DEFINES = -Dgpio -Dwarm_boot -Di2c -Dpll
 #LINKER_FLAGS = -static-libgcc -lgcc
 LINKER_FLAGS = -lgcc
 

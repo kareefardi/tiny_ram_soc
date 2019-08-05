@@ -18,7 +18,7 @@
  */
 
 module top (
-    input CLK,
+    input clk,
 
     // hardware UART
     output SER_TX,
@@ -108,11 +108,29 @@ module top (
     // Disable USB
     assign USBPU = 1'b0;
 
+    wire locked;
+    wire CLK;
+
+`ifdef pll
+    wire clk_pll;
+    wire locked;
+    pll pll (
+		.clock_in (clk),
+		.clock_out(clk_pll),
+		.locked(locked)
+	);
+    assign CLK = clk_pll;
+    //wire resetn = &reset_cnt & locked;
+    wire resetn = &reset_cnt;
+`else
+    assign CLK = clk;
+    wire resetn = &reset_cnt;
+`endif
     ///////////////////////////////////
     // Power-on Reset
     ///////////////////////////////////
     reg [5:0] reset_cnt = 0;
-    wire resetn = &reset_cnt;
+    //wire resetn = &reset_cnt;
 
     always @(posedge CLK) begin
         reset_cnt <= reset_cnt + !resetn;
